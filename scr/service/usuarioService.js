@@ -1,5 +1,4 @@
 const usuarioData = require('../data/usuarioData');
-const nodemailer = require('nodemailer');
 
 const HttpCodes = {
     success : 200,
