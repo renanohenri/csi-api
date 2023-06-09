@@ -10,11 +10,11 @@ const pgp = require('pg-promise')();
 // });
 
 const db = pgp({
-    user: 'ehco',
-    password: 'ehco123',
+    user: 'postgres',
+    password: 'admin',
     host: 'localhost',
     port: 5432,
-    database: 'dbmd',
+    database: 'dbcsi',
     // ssl: { rejectUnauthorized: false }
 });
 

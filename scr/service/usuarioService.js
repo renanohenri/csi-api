@@ -8,35 +8,6 @@ const HttpCodes = {
     // etc
 }
 
-const transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 465,
-    secure: true,
-    auth: {
-        user: "ticmdlondrina@gmail.com",
-        pass: "****"
-    }
-});
-
-async function sendEmail(){
-    try {
-        const message = transporter.sendMail({
-            from: "TI Colégio Mãe de Deus <ticmdlondrina@gmail.com>",
-            to: "eduardo98riqui@gmail.com",
-            subject: "Teste do nodemailer",
-            text: "estou validando a competencia do nodemailer",
-            html: "para testar o html <h1> NODEMAILER </h1> "
-        })
-        console.log(message);
-    } catch (error) {
-        console.log(error)
-    }
-
-}
-
-
-
-
 exports.authUsuario = async (usuario) => {
     const user = await usuarioData.authUser(usuario);
 
@@ -64,7 +35,6 @@ exports.getUsuarioId = async (id) => {
 
 exports.postUsuario = async (usuario) => {
     const user = await usuarioData.postUsuario(usuario);
-    await sendEmail();
     return user;
 };
 
