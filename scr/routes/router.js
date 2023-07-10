@@ -9,7 +9,6 @@ const geralService = require('../service/geralService.js');
 
 
 router.post('/authenticate', async (req, res) => {
-    console.log('oi')
     const usuario = req.body;
     const auth = await usuarioService.authUsuario(usuario);
     console.log(req.body);
@@ -79,6 +78,11 @@ router.post('/usuarios', async (req, res) => {
     res.json(novoUsuario);
 })
 
+router.delete('/usuario/:id', async (req, res) => {
+    await usuarioService.deletarUsuario(req.params.id);
+    res.json(200);
+})
+
 //disponibilidade
 
 router.get('/disponibilidade/:data/:disp', async (req, res) => {
@@ -112,5 +116,12 @@ router.post('/agendas', async (req, res) => {
     const novaAgenda =  await agendaService.postAgenda(agenda);
     res.json(novaAgenda);
 })
+
+router.delete('/agendas/:id', async (req, res) => {
+    console.log("cheguei")
+    await agendaService.deleteAgenda(req.params.id);
+    res.json(200);
+})
+
 
 module.exports = router;

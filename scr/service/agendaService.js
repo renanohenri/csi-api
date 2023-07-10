@@ -1,4 +1,3 @@
-const res = require('express/lib/response');
 const agendaData = require('../data/agendaData');
 const { result } = require('../infra/database');
 
@@ -18,6 +17,10 @@ exports.putAgenda = async (uuid, status) => {
 
 exports.postAgenda = async (agenda) => {
     return await agendaData.postAgenda(agenda);
+};
+
+exports.deleteAgenda = async (id) => {
+    return await agendaData.deleteAgenda(id);
 };
 
 exports.getDisponib = async (data, periodo) => {

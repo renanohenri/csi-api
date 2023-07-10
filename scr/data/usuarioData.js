@@ -29,3 +29,10 @@ exports.putUsuario = (newuser) => {
         [newuser.name, newuser.email, newuser.department]
     );
 }
+
+exports.deleteUsuario = (id) => {
+    return database.query(
+        'delete from usuario where id = $1',
+        [id]
+    );
+}

@@ -1,4 +1,5 @@
 const usuarioData = require('../data/usuarioData');
+const agendaData = require('../data/agendaData');
 
 const HttpCodes = {
     success : 200,
@@ -39,4 +40,9 @@ exports.postUsuario = async (usuario) => {
 
 exports.putUsuario = async (newuser) => {
     return await usuarioData.putUsuario(newuser)
+}
+
+exports.deletarUsuario = async (id) => {
+    await agendaData.deleteAgendaUsuario(id)
+    return await usuarioData.deleteUsuario(id)
 }

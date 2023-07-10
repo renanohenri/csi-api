@@ -32,7 +32,7 @@ exports.putAgenda = (uuid, status) => {
 
 exports.getAgendaUsuario = (id) => {
     return database.query(
-        'select data_agendamento::timestamp, qtd_solicitada_ipad, periodo_aula, status from agenda where user_id = $1 and data_agendamento >= current_date order by data_agendamento', [id]
+        'select id, data_agendamento::timestamp, qtd_solicitada_ipad, periodo_aula, status from agenda where user_id = $1 and data_agendamento >= current_date order by data_agendamento', [id]
     )
 }
 
@@ -41,4 +41,18 @@ exports.postAgenda = (agenda) => {
         "insert into agenda(data_agendamento, creat_at, user_id, qtd_solicitada_ipad, periodo_aula, status, uuid) values ($1, NOW()::timestamp, $2, $3, $4, $5, $6) returning *", 
         [agenda.data_agendamento, agenda.user_id, agenda.qtd_solicitada_ipad, agenda.periodo_aula, 'AGUARDANDO', uuid.v4()]
     );
+}
+
+exports.deleteAgendaUsuario = (id) => {
+    return database.query(
+        "delete from agenda where user_id = $1",
+        [id]
+    ); 
+}
+
+exports.deleteAgenda = (id) => {
+    return database.query(
+        "delete from agenda where id = $1",
+        [id]
+    ); 
 }
